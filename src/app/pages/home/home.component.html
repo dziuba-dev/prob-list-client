@@ -1,0 +1,39 @@
+<div class="home-container">
+  <mat-form-field>
+    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+  </mat-form-field>
+
+  <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+    <ng-container matColumnDef="position">
+      <th class="padding-3" mat-header-cell *matHeaderCellDef> No. </th>
+      <td class="padding-3" mat-cell *matCellDef="let element"> {{element.position}} </td>
+    </ng-container>
+    <ng-container matColumnDef="name">
+      <th class="padding-3" mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+      <td class="padding-3" mat-cell *matCellDef="let element"> {{element.name}} </td>
+    </ng-container>
+    <ng-container matColumnDef="description">
+      <th class="padding-3" mat-header-cell *matHeaderCellDef> Description </th>
+      <td class="padding-3" mat-cell *matCellDef="let element"> {{element.description | empty}} </td>
+    </ng-container>
+    <ng-container matColumnDef="typeGame">
+      <th class="padding-3" mat-header-cell *matHeaderCellDef> Type Game </th>
+      <td class="padding-3" mat-cell *matCellDef="let element"> {{element.typeGame | empty}} </td>
+    </ng-container>
+    <ng-container matColumnDef="author">
+      <th class="padding-3" mat-header-cell *matHeaderCellDef> Author </th>
+      <td class="padding-3" mat-cell *matCellDef="let element"> {{element.author | empty}} </td>
+    </ng-container>
+    <ng-container matColumnDef="typeMovie">
+      <th class="padding-3" mat-header-cell *matHeaderCellDef> Type Movie </th>
+      <td class="padding-3" mat-cell *matCellDef="let element"> {{element.typeMovie | empty}} </td>
+    </ng-container>
+    <ng-container matColumnDef="rating">
+      <th class="padding-3" mat-header-cell *matHeaderCellDef mat-sort-header> Rating </th>
+      <td class="padding-3" mat-cell *matCellDef="let element"> {{element.rating}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>
